@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Score Analyzer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        p { font-size: 50px; font-family: Verdana, sans-serif; }
+        label { font-size: 20px; display: block; margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <center>
+        <p>Score Analyzer</p>
+        <details class="mydetails">
+            <summary>Click Me</summary>
+            <p>Enter your grades in the following subjects:</p>
+        </details>
+        <img src="https://static.vecteezy.com/system/resources/thumbnails/047/917/827/small_2x/credit-score-illustration-with-loan-arrow-gauge-speedometer-indicator-showing-ratings-from-poor-to-good-in-a-flat-cartoon-style-background-vector.jpg">
+
+        <label for="filipino">Filipino</label>
+        <input type="number" id="filipino">
+
+        <label for="math">Math</label>
+        <input type="number" id="math">
+
+        <label for="ss">Social Studies</label>
+        <input type="number" id="ss">
+
+        <br>
+        <button onclick="analyzeScore()">Check Score</button>
+
+        <details>
+            <summary>Grade Scale</summary>
+            <p>99+ = Excellent</p>
+            <p>87-93 = Above Satisfactory</p>
+            <p>80-86 = Satisfactory</p>
+            <p>75-79 = Needs Improvement</p>
+            <p>Below 75 = Poor</p>
+        </details>
+    </center>
+
+    <script>
+        function analyzeScore() {
+            let filipino = parseInt(document.getElementById("filipino").value);
+            let math = parseInt(document.getElementById("math").value);
+            let ss = parseInt(document.getElementById("ss").value);
+
+            let scores = [filipino, math, ss];
+
+            scores.forEach(score => {
+                if (!isNaN(score)) { 
+                    switch(true) {
+                        case (score >= 99):
+                            alert("Excellent.");
+                            break;
+                        case (score >= 87 && score < 94):
+                            alert("Above Satisfactory.");
+                            break;
+                        case (score >= 80 && score < 87):
+                            alert("Satisfactory.");
+                            break;
+                        case (score >= 75 && score < 80):
+                            alert("Needs Improvement.");
+                            break;
+                        default:
+                            alert("Poor.");
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>
